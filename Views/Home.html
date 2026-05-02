@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Site</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+/* HEADER */
+header {
+    background: #444;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+/* HERO SECTION */
+.hero {
+    background: linear-gradient(to right, #7b4397, #dc2430);
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin-top: 10px;
+}
+
+/* MENU GRID */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 30px;
+}
+
+.box {
+    padding: 30px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.blue { background: #5c8edc; }
+.green { background: #8bc34a; }
+.red { background: #f44336; }
+.yellow { background: #ffc107; color: black; }
+.teal { background: #26a69a; }
+.dark { background: #333; }
+
+/* BERITA */
+.news {
+    padding: 20px 30px;
+}
+
+.news h3 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.news-box {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.label {
+    color: red;
+    font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h2>Sekolah-ku</h2>
+    <nav>                  <!-- buat hubungin antar link, contoh dari home ke login -->
+        <a href="/">Home</a>
+        <a href="/berita">Berita</a>
+        <a href="/aktivasi">Aktivasi</a>
+        <a href="/login">Login</a>
+        <a href="/kontak">Kontak</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-container">
+        <div class="card">
+            <h3>Satu akun untuk semua</h3>
+            <p>Gunakan satu akun untuk semua layanan kampus.</p>
+        </div>
+
+        <div class="card">
+            <h3>Akses dari mana saja</h3>
+            <p>Dapat diakses kapan saja secara online.</p>
+        </div>
+
+        <div class="card">
+            <h3>Kemudahan</h3>
+            <p>Akses semua informasi perkuliahan.</p>
+        </div>
+    </div>
+</section>
+
+<section class="menu">
+    <div class="box blue">Akademik</div>
+    <div class="box green">Perpustakaan</div>
+    <div class="box red">Surat Keterangan</div>
+    <div class="box yellow">BAAK</div>
+    <div class="box teal">Portfolio Mahasiswa</div>
+    <div class="box dark">Blog Komunitas</div>
+</section>
+
+<section class="news">
+    <h3>BERITA TERKINI</h3>
+    <div class="news-box">
+        <span class="label">[TERBARU]</span>
+        Kalender akademik.
+        <p>1 januari - 2026.</p>
+    </div>
+</section>
+
+</body>
+</html>
