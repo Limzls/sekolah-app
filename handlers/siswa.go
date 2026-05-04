@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"io"
 	"net/http"
+	"os"
 )
 
 // ==================== HOME ====================
@@ -18,7 +19,8 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 // ==================== GET SISWA ====================
 func GetSiswa(w http.ResponseWriter, r *http.Request) {
-	url := "https://khrsytwxeiygxkusfpel.supabase.co/rest/v1/siswa"
+	url := os.Getenv("SUPABASE_URL") + "/rest/v1/siswa"
+	key := os.Getenv("SUPABASE_KEY")
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -26,9 +28,8 @@ func GetSiswa(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// 🔑 GANTI DENGAN SUPABASE ANON KEY KAMU
-	req.Header.Add("apikey", "ISI_SUPABASE_KEY_KAMU")
-	req.Header.Add("Authorization", "Bearer ISI_SUPABASE_KEY_KAMU")
+	req.Header.Add("apikey", key)
+	req.Header.Add("Authorization", "Bearer "+key)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
@@ -38,10 +39,7 @@ func GetSiswa(w http.ResponseWriter, r *http.Request) {
 	}
 	defer resp.Body.Close()
 
-	// set response jadi JSON
 	w.Header().Set("Content-Type", "application/json")
-
-	// kirim response ke browser
 	io.Copy(w, resp.Body)
 }
 
