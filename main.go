@@ -7,16 +7,21 @@ import (
 	"sekolahapp/handlers"
 
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	// 🔥 load file .env
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Gagal load .env")
+	}
+
 	r := mux.NewRouter()
 
 	// routing utama
 	r.HandleFunc("/", handlers.HomeHandler).Methods("GET")
 	r.HandleFunc("/login", handlers.LoginHandler).Methods("GET", "POST")
-
-	// 🔥 TAMBAHAN PENTING
 	r.HandleFunc("/siswa", handlers.GetSiswa).Methods("GET")
 
 	log.Println("Server running on http://localhost:8080")
