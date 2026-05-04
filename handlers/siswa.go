@@ -1,13 +1,12 @@
 package handlers
 
 import (
-    "html/template"
-    "net/http"
-
-    "sekolahapp/config"
-    "sekolahapp/models"
+	"html/template"
+	"io"
+	"net/http"
 )
 
+// ==================== HOME ====================
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("Views/Home.html")
 	if err != nil {
@@ -17,38 +16,52 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, nil)
 }
 
+// ==================== GET SISWA ====================
 func GetSiswa(w http.ResponseWriter, r *http.Request) {
-    rows, err := config.DB.Query("SELECT * FROM Siswa")
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
-    defer rows.Close()
+	url := "https://khrsytwxeiygxkusfpel.supabase.co/rest/v1/siswa"
 
-    var siswa []models.Siswa
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
-    for rows.Next() {
-        var s models.Siswa
-        rows.Scan(&s.NIS, &s.NamaDepan, &s.NamaBelakang, &s.Alamat)
-        siswa = append(siswa, s)
-    }
+	// 🔑 GANTI DENGAN SUPABASE ANON KEY KAMU
+	req.Header.Add("apikey", "ISI_SUPABASE_KEY_KAMU")
+	req.Header.Add("Authorization", "Bearer ISI_SUPABASE_KEY_KAMU")
 
-    tmpl := template.Must(template.ParseFiles("templates/siswa.html"))
-    tmpl.Execute(w, siswa)
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer resp.Body.Close()
+
+	// set response jadi JSON
+	w.Header().Set("Content-Type", "application/json")
+
+	// kirim response ke browser
+	io.Copy(w, resp.Body)
 }
 
+// ==================== LOGIN ====================
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		tmpl, _ := template.ParseFiles("Views/Login.html")
+		tmpl, err := template.ParseFiles("Views/Login.html")
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 		tmpl.Execute(w, nil)
 		return
 	}
 
-	// POST (saat login dikirim)
+	// POST (login)
 	username := r.FormValue("username")
 	password := r.FormValue("password")
 
-	// sementara (dummy login)
+	// dummy login
 	if username == "admin" && password == "123" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
