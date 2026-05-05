@@ -8,6 +8,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
+	
 )
 
 func main() {
@@ -23,6 +24,9 @@ func main() {
 	r.HandleFunc("/", handlers.HomeHandler).Methods("GET")
 	r.HandleFunc("/login", handlers.LoginHandler).Methods("GET", "POST")
 	r.HandleFunc("/siswa", handlers.GetSiswa).Methods("GET")
+	r.HandleFunc("/pegawai", handlers.GetPegawai).Methods("GET")
+    r.HandleFunc("/kelas", handlers.GetKelas).Methods("GET")
+    r.HandleFunc("/mapel", handlers.GetMapel).Methods("GET")
 
 	log.Println("Server running on http://localhost:8080")
 	http.ListenAndServe(":8080", r)
