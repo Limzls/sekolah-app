@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UG Student Site</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      display:flex;
+      background:#f3f3f3;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+      width:270px;
+      min-height:100vh;
+      background:#f8f8f8;
+      border-right:1px solid #ddd;
+    }
+
+    .logo{
+      background:#263243;
+      color:white;
+      padding:20px;
+      font-size:15px;
+      font-weight:bold;
+    }
+
+    .logo span{
+      color:#bbb;
+      font-size:12px;
+    }
+
+    .sidebar ul{
+      list-style:none;
+    }
+
+    .sidebar ul li{
+      padding:18px 22px;
+      color:#666;
+      border-bottom:1px solid #eee;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .sidebar ul li:hover{
+      background:#ececec;
+      color:black;
+    }
+
+    .sidebar ul li i{
+      width:25px;
+    }
+
+    /* MAIN */
+    .main{
+      flex:1;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      background:#2f3948;
+      height:60px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 30px;
+      color:white;
+    }
+
+    .navbar .user{
+      font-size:15px;
+    }
+
+    /* CONTENT */
+    .content{
+      padding:30px;
+    }
+
+    .title{
+      color:#2f80ff;
+      font-size:45px;
+      margin-bottom:25px;
+    }
+
+    /* INFO BOX */
+    .info-box{
+      background:white;
+      border:1px solid #ddd;
+      padding:20px;
+      margin-bottom:25px;
+      line-height:1.8;
+      color:purple;
+    }
+
+    .info-box hr{
+      margin:15px 0;
+      border:none;
+      border-top:1px solid #ddd;
+    }
+
+    /* WELCOME */
+    .welcome{
+      background:white;
+      border:1px solid #ddd;
+      margin-bottom:30px;
+    }
+
+    .welcome-header{
+      padding:15px 20px;
+      border-bottom:1px solid #ddd;
+      font-weight:bold;
+    }
+
+    .welcome-body{
+      padding:20px;
+      color:red;
+      line-height:1.8;
+    }
+
+    /* CARDS */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .card{
+      padding:35px 20px;
+      text-align:center;
+      color:white;
+      border-radius:3px;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card h2{
+      margin-bottom:10px;
+      font-size:33px;
+    }
+
+    .card p{
+      font-size:15px;
+    }
+
+    .blue{
+      background:#5c9cf5;
+    }
+
+    .green{
+      background:#98c94c;
+    }
+
+    .red{
+      background:#ff5a5a;
+    }
+
+    .yellow{
+      background:#f3c400;
+    }
+
+    .cyan{
+      background:#42d5c5;
+    }
+
+    .dark{
+      background:#333;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        width:100%;
+        min-height:auto;
+      }
+
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .title{
+        font-size:32px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="logo">
+      UG STUDENT SITE <span>V3</span>
+    </div>
+
+    <ul>
+      <li><i class="fa fa-home"></i> Home</li>
+      <li><i class="fa fa-user"></i> Biodata / Foto</li>
+      <li><i class="fa fa-school"></i> Info Kampus</li>
+      <li><i class="fa fa-envelope"></i> Email</li>
+      <li><i class="fa fa-list"></i> KRS</li>
+      <li><i class="fa fa-money-bill"></i> Blanko Pembayaran</li>
+      <li><i class="fa fa-graduation-cap"></i> Akademik</li>
+      <li><i class="fa fa-book"></i> Perpustakaan</li>
+      <li><i class="fa fa-file"></i> Surat Keterangan</li>
+      <li><i class="fa fa-lock"></i> Ganti Password</li>
+      <li><i class="fa fa-sign-out-alt"></i> Logout</li>
+    </ul>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <div></div>
+      <div class="user">10124728</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <h1 class="title">HOME</h1>
+
+      <!-- INFO -->
+      <div class="info-box">
+
+        <p>
+          Pengisian KRS telah dapat dilakukan melalui menu "KRS".
+          Proses perubahan KRS dapat dilakukan selama masa pengisian KRS.
+        </p>
+
+        <hr>
+
+        <p>
+          Harap melengkapi Foto dan Biodata pada menu Biodata.
+        </p>
+
+        <hr>
+
+        <p>
+          Mahasiswa yang telah mengajukan surat keterangan di studentsite,
+          silakan email terlebih dahulu.
+        </p>
+
+      </div>
+
+      <!-- WELCOME -->
+      <div class="welcome">
+
+        <div class="welcome-header">
+          <i class="fa fa-building"></i> UG SS
+        </div>
+
+        <div class="welcome-body">
+          Selamat Datang di Universitas Gunadarma StudentSite (UG-SS).
+          Silahkan gunakan informasi yang terdapat pada aplikasi ini
+          dengan sebaik-baiknya.
+        </div>
+
+      </div>
+
+      <!-- CARDS -->
+      <div class="cards">
+
+        <div class="card blue">
+          <h2>Akademik</h2>
+          <p>Rangkuman Nilai, Daftar Sidang, Upload Foto</p>
+        </div>
+
+        <div class="card green">
+          <h2>Perpustakaan</h2>
+          <p>Bebas Perpustakaan, Paper Depository</p>
+        </div>
+
+        <div class="card red">
+          <h2>Surat Keterangan</h2>
+          <p>Pembuatan Surat Keterangan</p>
+        </div>
+
+        <div class="card yellow">
+          <h2>BAAK</h2>
+          <p>Jadwal Kuliah, Jadwal Ujian</p>
+        </div>
+
+        <div class="card cyan">
+          <h2>Portfolio Mahasiswa</h2>
+          <p>Tugas, Seminar</p>
+        </div>
+
+        <div class="card dark">
+          <h2>Blog Komunitas</h2>
+          <p>Pengisian Blog</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -2,60 +2,341 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Sekolah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #ffe082, #ffb300);
+    --card: #ffffff;
+    --text: #000;
+    --input: #eeeeee;
+    --btn: #ff9800;
+}
+
+.light {
+    --bg-gradient: linear-gradient(135deg, #5f2c82, #6e1eb1);
+    --card: #f0f0f0;
+    --text: #333;
+    --input: #dddddd;
+    --btn: #b92ca2;
+}
+
+*{
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial;
-    background: #f4f4f4;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     height: 100vh;
 }
 
+/* TOGGLE MODE */
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+
+    border: none;
+    border-radius: 20px;
+
+    padding: 8px 16px;
+
+    background: black;
+    color: white;
+
+    cursor: pointer;
+}
+
+/* LOGIN BOX */
 .login-box {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 300px;
+
+    width: 750px;
+    max-width: 95%;
+
+    min-height: 420px;
+
+    background: var(--card);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+    animation: fadeIn 0.7s ease;
+}
+
+/* LEFT */
+.login-left {
+
+    flex: 1;
+
+    background: #eaeaea;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-left img {
+
+    width: 170px;
+    opacity: 0.8;
+}
+
+/* RIGHT */
+.login-right {
+
+    flex: 1;
+
+    padding: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper {
+
+    width: 100%;
+    max-width: 300px;
+
     text-align: center;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+.form-wrapper h2 {
+
+    margin-bottom: 25px;
+    color: var(--text);
 }
 
-button {
-    padding: 10px;
+/* INPUT */
+.input-group {
+
+    margin-bottom: 15px;
+}
+
+.input-group input {
+
     width: 100%;
-    background: #444;
-    color: white;
+
+    padding: 13px 15px;
+
     border: none;
+    border-radius: 25px;
+
+    background: var(--input);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
 }
 
-a {
-    display: block;
-    margin-top: 10px;
+.input-group input:focus {
+
+    outline: none;
 }
+
+/* BUTTON */
+.login-btn {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: var(--btn);
+
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+
+    transform: scale(1.03);
+}
+
+/* FOOTER TEXT */
+.form-footer {
+
+    margin-top: 15px;
+}
+
+.form-footer small {
+
+    display: block;
+
+    color: #666;
+
+    margin-top: 5px;
+}
+
+/* ERROR MESSAGE */
+.error {
+
+    background: #ffebee;
+    color: #c62828;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    margin-bottom: 15px;
+
+    font-size: 13px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .login-box {
+
+        flex-direction: column;
+    }
+
+    .login-left {
+
+        display: none;
+    }
+
+    .login-right {
+
+        padding: 30px 20px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- BUTTON MODE -->
+<button class="toggle-btn" onclick="toggleMode()">
+    Mode
+</button>
+
 <div class="login-box">
-    <h2>Login</h2>
 
-    <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
-    </form>
+    <!-- LEFT -->
+    <div class="login-left">
 
-    <a href="/">Kembali ke Home</a>
+        <img src="https://cdn-icons-png.flaticon.com/512/295/295128.png">
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="login-right">
+
+        <div class="form-wrapper">
+
+            <h2>Member Login</h2>
+
+            <!-- FORM LOGIN -->
+            <form method="POST" action="/login">
+
+                <!-- USERNAME -->
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Masukkan Username"
+                        required
+                    >
+
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="input-group">
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Masukkan Password"
+                        required
+                    >
+
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit" class="login-btn">
+
+                    LOGIN
+
+                </button>
+
+            </form>
+
+            <!-- FOOTER -->
+            <div class="form-footer">
+
+                <small>Forgot Username / Password?</small>
+
+                <small>Create your Account →</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+<script>
+
+/* MODE */
+if (localStorage.getItem("mode") === "light") {
+
+    document.body.classList.add("light");
+}
+
+/* TOGGLE */
+function toggleMode() {
+
+    document.body.classList.toggle("light");
+
+    localStorage.setItem(
+        "mode",
+        document.body.classList.contains("light")
+        ? "light"
+        : "dark"
+    );
+}
+
+</script>
 
 </body>
 </html>

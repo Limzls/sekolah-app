@@ -5,39 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Site</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+:root {
+    --bg: #121212;
+    --text: #ffffff;
+    --card: #1e1e1e;
+    --gradient: linear-gradient(135deg, #6d2da1, #791ad1);
+    --accent: orange;
+        --menu-bg: linear-gradient(135deg, #2b1055, #6a00f4); /* ungu gelap */
+    --about-bg: linear-gradient(135deg, #4dabf7, #1c3faa); /* tetap biru (dark mode) */
+}
+
+.light {
+    --bg: #ffffff;
+    --text: #000;
+    --card: #f5f5f5;
+    --gradient: linear-gradient(135deg, #ffe082, #ffb300);
+        --menu-bg: linear-gradient(135deg, #6a00f4, #b388ff); /* ungu lebih terang */
+    --about-bg: linear-gradient(135deg, #fff176, #ffca28); /* kuning gradasi */
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s;
 }
 
 /* HEADER */
 header {
-    background: #444;
-    color: white;
+    background: #000;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h2 {
-    margin: 0;
+.light header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
 }
 
 nav a {
-    color: white;
+    color: var(--text);
     margin-left: 20px;
     text-decoration: none;
+    transition: 0.3s;
 }
 
-/* HERO SECTION */
-.hero {
-    background: linear-gradient(to right, #7b4397, #dc2430);
-    padding: 60px 20px;
-    text-align: center;
+nav a:hover {
+    opacity: 0.6;
+}
+
+.toggle-btn {
+    background: var(--gradient);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
     color: white;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    padding: 60px 20px;
 }
 
 .hero-container {
@@ -48,112 +82,813 @@ nav a {
 }
 
 .card {
-    background: rgba(0,0,0,0.6);
-    padding: 20px;
-    width: 250px;
-    border-radius: 10px;
-}
-
-.card h3 {
-    margin-top: 10px;
-}
-
-/* MENU GRID */
-.menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 30px;
-}
-
-.box {
-    padding: 30px;
-    color: white;
-    border-radius: 8px;
+    background: var(--gradient);
+    padding: 25px;
+    width: 260px;
+    border-radius: 12px;
     text-align: center;
-    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
 }
 
-.blue { background: #5c8edc; }
-.green { background: #8bc34a; }
-.red { background: #f44336; }
-.yellow { background: #ffc107; color: black; }
-.teal { background: #26a69a; }
-.dark { background: #333; }
-
-/* BERITA */
-.news {
-    padding: 20px 30px;
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
 }
 
-.news h3 {
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-}
-
-.news-box {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
+input {
+    width: 90%;
+    padding: 10px;
     margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
 }
 
-.label {
-    color: red;
+.action {
+    margin-top: 10px;
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: black;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action:hover {
+    transform: scale(1.05);
+}
+
+/* TITLE STYLE */
+.section-title {
+    padding: 0 30px;
+    margin-top: 20px;
+}
+
+.section-title h3 {
+    border-left: 5px solid var(--accent);
+    padding-left: 10px;
+}
+
+/* MENU */
+.menu {
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.course-card {
+    background: var(--card);
+    border-radius: 12px;
+    width: 260px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-6px);
+}
+/* BACKGROUND FULL */
+.menu-section {
+    background: linear-gradient(135deg, #a330c0, #b30a88);
+    padding: 60px 20px;
+}
+
+/* TITLE MASUK KE DALAM & TENGAH */
+.menu-section .section-title {
+    max-width: 1100px;
+    margin: 0 auto 30px;
+}
+
+.menu-section .section-title h3 {
+    color: white;
+    border-left: 5px solid orange;
+    padding-left: 10px;
+}
+
+/* MENU TETAP TENGAH (INI KUNCI BIAR GA KE KIRI) */
+.menu-section .menu {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+/* HEADER CARD */
+.course-img {
+    height: 120px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+/* CONTENT */
+.course-content {
+    padding: 15px;
+}
+
+.course-content h3 {
+    margin: 5px 0;
+}
+
+.course-content small {
+    opacity: 0.7;
+}
+
+.course-content ul {
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* BUTTON SLIDE */
+.course-btn {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    background: var(--accent);
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.course-card:hover .course-btn {
+    bottom: 0;
+}
+/* NEWS */
+.news {
+    padding: 40px 20px 30px;
+}
+
+.news-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.news-container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: visible;
+}
+/* BACKGROUND FULL LEBAR */
+.about-school {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    width: 100vw;
+    background: linear-gradient(135deg, #4dabf7, #1c3faa);
+    padding: 60px 0;
+}
+/* ISI TETAP DI TENGAH */
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 0;
+}
+
+/* BIAR TEKS RAPI */
+.about-container p {
+    text-align: justify;
+    line-height: 1.8;
+}
+/* SLIDER */
+.news-slider {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+    padding-top: 10px;
+}
+.news-card {
+    flex: 0 0 calc((100% - 40px) / 3);
+    /* 100% dikurangi gap (20px x 2 = 40px), dibagi 3 */
+    
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    position: relative;
+    min-height: 255px;
+    box-sizing: border-box;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+}
+
+.news-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: purple;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.news-btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background: orange;
+    color: black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* TABLE */
+.table-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.table-box {
+    flex: 1;
+    min-width: 300px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: purple;
+    color: white;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background: rgba(255,255,255,0.05);
+}
+/*KHUSUS BUAT NEWS YANG DIBAWAH*/   
+/* WRAPPER BIAR TENGAH */
+.news-wrapper {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* CARDS RAPI */
+.news-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CARD SIZE FIX */
+.news-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px; /* ukuran tetap */
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+}
+
+/* NOMOR */
+.news-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: purple;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+/* BUTTON MODEL COURSE (DARI BAWAH) */
+.news-btn {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    background: orange;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+/* MUNCUL SAAT HOVER */
+.news-card:hover .news-btn {
+    bottom: 0;
+}
+/* HEADER */
+.news-header {
+    max-width: 1000px;
+    margin: 40px auto 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-header h3 {
+    border-left: 5px solid orange;
+    padding-left: 10px;
+}
+
+/* NAV BUTTON */
+.news-nav button {
+    background: orange;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* CONTAINER CENTER */
+.news-container {
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* SLIDER */
+.news-slider {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease;
+}
+
+/* CARD */
+.news-card {
+    min-width: calc(100% / 3 - 14px); /* tampil 3 */
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    position: relative;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+/* NOMOR */
+.news-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: purple;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* BUTTON */
+.news-btn {
+    margin-top: 10px;
+    background: orange;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+/* SECTION PROFIL SEKOLAH */
+.about-school {
+    background: linear-gradient(135deg, #851d7f, #7d21bb);
+    padding: 60px 20px;
+    margin-top: 40px;
+    color: white;
+}
+
+/* CONTAINER BIAR TENGAH */
+.about-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* JUDUL */
+.about-container h3 {
+    border-left: 5px solid orange;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+/* PARAGRAF JUSTIFY */
+.about-container p {
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+.menu-container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+.menu-slider {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease;
+}
+
+.menu-slider .course-card {
+    min-width: calc(100% / 4 - 15px);
+    flex-shrink: 0;
 }
 </style>
-
 </head>
+
 <body>
 
 <header>
-    <h2>Sekolah-ku</h2>
-    <nav>                  <!-- buat hubungin antar link, contoh dari home ke login -->
+    <h2>SMA 69 NEGERI Bojongawi</h2>
+    <nav>
         <a href="/">Home</a>
-        <a href="/berita">Berita</a>
-        <a href="/aktivasi">Aktivasi</a>
+        <a href="#">Berita</a>
+        <a href="#">Aktivasi</a>
         <a href="/login">Login</a>
-        <a href="/kontak">Kontak</a>
+        <a href="#">Kontak</a>
     </nav>
+    <button class="toggle-btn" onclick="toggleMode()">Mode</button>
 </header>
 
+<!-- INPUT -->
 <section class="hero">
-    <div class="hero-container">
-        <div class="card">
-            <h3>Satu akun untuk semua</h3>
-            <p>Gunakan satu akun untuk semua layanan kampus.</p>
-        </div>
+<div class="hero-container">
 
-        <div class="card">
-            <h3>Akses dari mana saja</h3>
-            <p>Dapat diakses kapan saja secara online.</p>
-        </div>
+<div class="card">
+    <h3>Cek Kelulusan</h3>
+    <input type="text" id="nis" placeholder="Masukkan NIS">
+    <button class="action" onclick="cekKelulusan()">Cek</button>
+    <p id="hasil"></p>
+</div>
 
-        <div class="card">
-            <h3>Kemudahan</h3>
-            <p>Akses semua informasi perkuliahan.</p>
-        </div>
+<div class="card">
+    <h3>Cek Jadwal Kelas</h3>
+    <input type="text" placeholder="Masukkan Kelas">
+    <button class="action">Cek</button>
+</div>
+
+<div class="card">
+    <h3>Cek NIS</h3>
+    <input type="text" placeholder="Masukkan Nama">
+    <button class="action">Cek</button>
+</div>
+                                                                     
+</div>
+</section>
+
+<section class="menu-section">
+
+    <!-- MENU TITLE -->
+    <div class="section-title news-header">
+    <div>
+        <h3>Menu Utama</h3>
+        <small>Pilihan kegiatan siswa, guru dan lain sebagainya</small>
     </div>
+
+    <div class="news-nav">
+        <button onclick="prevMenu()">&#8249;</button>
+        <button onclick="nextMenu()">&#8250;</button>
+    </div>
+</div>
+    <!-- MENU -->
+<div class="menu-container">
+    <div class="menu-slider" id="menuSlider">
+
+<div class="course-card">
+    <div class="course-img">AKADEMIK</div>
+    <div class="course-content">
+        <h3>Akademik SMA</h3>
+        <small>Program Utama</small>
+        <ul>
+            <li>Kurikulum nasional</li>
+            <li>Jadwal pelajaran</li>
+            <li>Evaluasi siswa</li>
+            <li>Pengolahan nilai</li>
+        </ul>
+    </div>
+    <button class="course-btn">Selengkapnya</button>
+</div>
+
+<div class="course-card">
+    <div class="course-img">PERPUSTAKAAN</div>
+    <div class="course-content">
+        <h3>Perpustakaan</h3>
+        <small>Sumber Belajar</small>
+        <ul>
+            <li>Peminjaman buku</li>
+            <li>Katalog</li>
+            <li>Literasi siswa</li>
+        </ul>
+    </div>
+    <button class="course-btn">Selengkapnya</button>
+</div>
+
+<div class="course-card">
+    <div class="course-img">SURAT</div>
+    <div class="course-content">
+        <h3>Surat Keterangan</h3>
+        <small>Administrasi</small>
+        <ul>
+            <li>Surat aktif</li>
+            <li>Surat lulus</li>
+            <li>Legalitas</li>
+        </ul>
+    </div>
+    <button class="course-btn">Selengkapnya</button>
+</div>
+
+<div class="course-card">
+    <div class="course-img">BLOG</div>
+    <div class="course-content">
+        <h3>Blog Komunitas</h3>
+        <small>Media Kreatif</small>
+        <ul>
+            <li>Artikel siswa</li>
+            <li>Berita sekolah</li>
+            <li>Karya kreatif</li>
+        </ul>
+    </div>
+    <button class="course-btn">Selengkapnya</button>
+</div>
+<div class="course-card">
+    <div class="course-img">JURUSAN</div>
+    <div class="course-content">
+        <h3>Jurusan</h3>
+        <small>Program Belajar</small>
+        <ul>
+            <li>IPA</li>
+            <li>IPS</li>
+            <li>Bahasa</li>
+        </ul>
+    </div>
+    <button class="course-btn">Selengkapnya</button>
+</div>
+
+<div class="course-card">
+    <div class="course-img">MAPEL</div>
+    <div class="course-content">
+        <h3>Mata Pelajaran</h3>
+        <small>Materi Sekolah</small>
+        <ul>
+            <li>Matematika</li>
+            <li>Bahasa Indonesia</li>
+            <li>Fisika</li>
+        </ul>
+    </div>
+    <button class="course-btn">Selengkapnya</button>
+</div>
+
+<div class="course-card">
+    <div class="course-img">GURU</div>
+    <div class="course-content">
+        <h3>Data Guru</h3>
+        <small>Tenaga Pengajar</small>
+        <ul>
+            <li>Profil guru</li>
+            <li>Jadwal mengajar</li>
+            <li>Kontak</li>
+        </ul>
+    </div>
+    <button class="course-btn">Selengkapnya</button>
+</div>
 </section>
 
-<section class="menu">
-    <div class="box blue">Akademik</div>
-    <div class="box green">Perpustakaan</div>
-    <div class="box red">Surat Keterangan</div>
-    <div class="box yellow">BAAK</div>
-    <div class="box teal">Portfolio Mahasiswa</div>
-    <div class="box dark">Blog Komunitas</div>
-</section>
+<!-- NEWS -->
+<div class="section-title news-header">
+    <div>
+        <h3>Pengumuman Terbaru</h3>
+        <small>Lepkom Mandiri Berbasis Virtual</small>
+    </div>
 
+    <div class="news-nav">
+        <button onclick="prevSlide()">&#8249;</button>
+        <button onclick="nextSlide()">&#8250;</button>
+    </div>
+</div>
+
+<!-- NEWS -->
 <section class="news">
+
+<div class="news-container">
+
+<div class="news-slider" id="newsSlider">
+
+    <!-- CARD 1 -->
+    <div class="news-card">
+        <div class="news-number">1</div>
+        <h4>Jadwal Pelajaran</h4>
+        <p>Jadwal terbaru sudah diperbarui.</p>
+        <ul>
+            <li>Berisi mata pelajaran harian</li>
+            <li>Menampilkan jam masuk dan selesai</li>
+            <li>Disusun secara terstruktur</li>
+            <li>Diperbarui secara berkala</li>
+        </ul>
+        <button class="news-btn">Selengkapnya</button>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="news-card">
+        <div class="news-number">2</div>
+        <h4>Jadwal Kursus</h4>
+        <p>Kursus dimulai 13 April 2026.</p>
+        <ul>
+            <li>Tanggal mulai: 13 April 2026</li>
+            <li>Kegiatan di laboratorium komputer</li>
+            <li>Materi teknologi informasi</li>
+            <li>Pembelajaran teori dan praktik</li>
+        </ul>
+        <button class="news-btn">Selengkapnya</button>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="news-card">
+        <div class="news-number">3</div>
+        <h4>Pengumuman Ujian</h4>
+        <p>Ujian dimulai minggu depan.</p>
+        <ul>
+            <li>Jenis kegiatan: evaluasi belajar</li>
+            <li>Waktu: minggu depan</li>
+            <li>Tujuan: mengukur kemampuan siswa</li>
+            <li>Perlu persiapan belajar</li>
+        </ul>
+        <button class="news-btn">Selengkapnya</button>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="news-card">
+        <div class="news-number">4</div>
+        <h4>Pengumuman Nilai</h4>
+        <p>Nilai semester sudah tersedia.</p>
+        <ul>
+            <li>Berisi hasil ujian semester</li>
+            <li>Dapat diakses oleh siswa</li>
+            <li>Menunjukkan pencapaian belajar</li>
+            <li>Digunakan untuk evaluasi</li>
+        </ul>
+        <button class="news-btn">Selengkapnya</button>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="news-card">
+        <div class="news-number">5</div>
+        <h4>Kegiatan Sekolah</h4>
+        <p>Informasi kegiatan terbaru.</p>
+        <ul>
+            <li>Berisi kegiatan terbaru sekolah</li>
+            <li>Bisa berupa lomba atau acara</li>
+            <li>Melibatkan siswa dan guru</li>
+            <li>Bertujuan meningkatkan partisipasi</li>
+        </ul>
+        <button class="news-btn">Selengkapnya</button>
+    </div>
+
+</div>
+</div>
+<!-- PROFIL SEKOLAH -->
+<section class="about-school">
+
+    <div class="about-container">
+        <h3>Profil SMAN 69 Bojongawi</h3>
+
+        <p>
+            SMAN 69 Bojongawi merupakan salah satu institusi pendidikan menengah atas yang berkomitmen 
+            dalam menciptakan generasi unggul, berkarakter, dan berdaya saing tinggi di era globalisasi. 
+            Sekolah ini menyediakan lingkungan belajar yang kondusif dengan dukungan tenaga pendidik yang 
+            profesional serta fasilitas yang memadai guna menunjang proses pembelajaran secara optimal.
+        </p>
+
+        <p>
+            Dalam pelaksanaan kegiatan akademik, SMAN 69 Bojongawi menerapkan kurikulum nasional yang 
+            dipadukan dengan berbagai program pengembangan diri siswa, seperti kegiatan ekstrakurikuler, 
+            pelatihan keterampilan, serta pembinaan karakter. Hal ini bertujuan untuk membentuk siswa 
+            yang tidak hanya unggul dalam bidang akademik, tetapi juga memiliki sikap disiplin, tanggung jawab, 
+            dan kepedulian sosial.
+        </p>
+
+        <p>
+            Selain itu, sekolah juga aktif dalam memanfaatkan teknologi informasi sebagai sarana pendukung 
+            pembelajaran, sehingga siswa mampu beradaptasi dengan perkembangan digital yang semakin pesat. 
+            Dengan visi menjadi sekolah unggulan yang berorientasi pada mutu dan inovasi, SMAN 69 Bojongawi 
+            terus berupaya meningkatkan kualitas pendidikan demi masa depan siswa yang lebih baik.
+        </p>
+
     <h3>BERITA TERKINI</h3>
     <div class="news-box">
         <span class="label">[TERBARU]</span>
         Kalender akademik.
         <p>1 januari - 31 Desember 2026 berubah?</p>
     </div>
+
 </section>
+</section>
+<script>
+let menuIndex = 0;
+const visibleMenu = 4; // jumlah card tampil
+
+function nextMenu() {
+    const slider = document.getElementById("menuSlider");
+    const total = slider.children.length;
+
+    if (menuIndex < total - visibleMenu) {
+        menuIndex++;
+        updateMenu();
+    }
+}
+
+function prevMenu() {
+    if (menuIndex > 0) {
+        menuIndex--;
+        updateMenu();
+    }
+}
+
+function updateMenu() {
+    const slider = document.getElementById("menuSlider");
+    const width = slider.children[0].offsetWidth + 20;
+    slider.style.transform = `translateX(-${menuIndex * width}px)`;
+}
+</script>
+<script>
+let index = 0;
+const maxSlide = 2; // karena 5 item, tampil 3
+
+function nextSlide() {
+    if (index < maxSlide) {
+        index++;
+        updateSlide();
+    }
+}
+
+function prevSlide() {
+    if (index > 0) {
+        index--;
+        updateSlide();
+    }
+}
+
+function updateSlide() {
+    const slider = document.getElementById("newsSlider");
+    const width = slider.children[0].offsetWidth + 20;
+    slider.style.transform = `translateX(-${index * width}px)`;
+}
+</script>
+<script>
+window.addEventListener("scroll", function() {
+    const section = document.querySelector(".about-school");
+    const posisi = section.getBoundingClientRect().top;
+
+    if (posisi < window.innerHeight - 100) {
+        section.style.opacity = "1";
+        section.style.transform = "translateY(0)";
+    }
+});
+</script>
+<script>
+function toggleMode() {
+    document.body.classList.toggle("light");
+}
+
+function cekKelulusan() {
+    let nis = document.getElementById("nis").value;
+    document.getElementById("hasil").innerText =
+        nis ? "Status: LULUS ✅" : "Masukkan NIS!";
+}
+</script>
 
 </body>
 </html>
